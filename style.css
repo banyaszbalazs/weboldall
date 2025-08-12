@@ -1,1 +1,131 @@
+/* Alap beállítások */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fejléc */
+header {
+  background-color: #0f0f0f;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff55;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+nav ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul.menu li {
+  display: inline-block;
+}
+
+nav ul.menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav ul.menu a:hover {
+  color: #00f0ff;
+  text-shadow: 0 0 8px #00f0ff;
+}
+
+/* Panelek konténer */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+/* Lista szekciók */
+.list {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 15px #00f0ff55;
+  border: 1px solid #00f0ff55;
+  transition: 0.3s;
+}
+
+.list:hover {
+  box-shadow: 0 0 25px #00f0ff, 0 0 50px #00f0ff;
+}
+
+.list h2 {
+  border-bottom: 2px solid #00f0ff;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* Linkek */
+a {
+  color: #00f0ff;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 5px #00f0ff;
+}
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    opacity: 0.8;
+  }
+  50% {
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, 0 0 80px #0ff;
+    opacity: 1;
+  }
+}
+
+.watermark {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #0ff;
+  font-weight: bold;
+  animation: neonPulse 2s infinite;
+  z-index: 999;
+  user-select: none;
+}
 
