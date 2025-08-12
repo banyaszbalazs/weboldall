@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(to bottom right, #1a0000, #330000, #660000);
       color: white;
       display: flex;
       flex-direction: column;
@@ -31,19 +31,35 @@
       margin: 0;
       font-size: 2rem;
       font-weight: bold;
-      color: #00ffff;
+      color: #ff0000;
+      text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000;
     }
 
     header nav a {
-      margin-left: 2rem;
-      color: #00aaff;
+      margin-left: 20px;
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s;
     }
 
-    header nav a:hover {
-      color: #00ffff;
+    .button {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px #ff0000;
+      cursor: pointer;
+      border: 2px solid #ff0000;
+      background: transparent;
+      color: #ff0000;
+    }
+
+    .button:hover {
+      background: #ff0000;
+      color: #fff;
+      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000 inset;
+      transform: scale(1.1);
     }
 
     .container {
@@ -56,20 +72,17 @@
       animation: slideIn 1.5s ease-out;
     }
 
-    .profile-info {
-      text-align: center;
-    }
-
     h2 {
-      color: #00ffff;
+      color: #ff0000;
       font-size: 2rem;
       margin-bottom: 1rem;
+      text-shadow: 0 0 10px #ff0000;
     }
 
     p {
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
-      color: #e0f7fa;
+      color: #ffe0e0;
     }
 
     iframe {
@@ -78,25 +91,20 @@
       border: none;
       border-radius: 15px;
       margin-top: 2rem;
-      box-shadow: 0 0 15px #00aaff;
+      box-shadow: 0 0 15px #ff0000;
     }
 
-    /* Setup gomb*/
-    .back-button {
-      text-decoration: none;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      color: #fff;
-      background: transparent;
-      border: 2px solid #00ffff;
-      border-radius: 12px;
-      transition: transform 0.2s ease-in-out;
-      margin-left: 20px;
-    }
-
-    .back-button:hover {
-      transform: scale(1.1); 
-      box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff inset;
+    .watermark {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: #ff0000;
+      font-weight: bold;
+      animation: neonPulse 2s infinite;
+      z-index: 999;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -108,14 +116,27 @@
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+
+    @keyframes neonPulse {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+        opacity: 0.8;
+      }
+      50% {
+        text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="watermark">@balazs734</div>
   <header>
-    <h1>HOME</h1>
+    <h1>FŐOLDAL</h1>
     <nav>
-      <a href="setup.html" class="back-button">Setup</a> <!-- Setup gomb -->
-      <a href="https://discord.com/invite/" class="dc-gomb">Discord</a> <!-- Discord gomb -->
+      <a href="setup.html" class="button">Setup</a>
+      <a href="https://discord.com/invite/" class="button" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://yt.balazs734.hu" class="button" target="_blank" rel="noopener noreferrer">YouTube</a>
     </nav>
   </header>
 
@@ -130,8 +151,8 @@
         Ha szeretnél része lenni a közösségemnek, iratkozz fel, és tarts velem a jövőben is! 🎮
       </p>
 
-      <h2>Legújabb videóm</h2>
-      <iframe src="https://www.youtube.com/embed/YEYu4cD5KAU?si=5wuM4JzqP8DPfnJp" allowfullscreen></iframe>
+      <h2>Legújabb videóm:</h2>
+      <iframe src="https://www.youtube.com/embed/35ql0tx6vsQ?si=p9kwQzqPEJd4bw8z" allowfullscreen></iframe>
     </div>
   </div>
 </body>
