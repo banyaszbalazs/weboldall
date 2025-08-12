@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Balázs - Setup</title>
+  <title>asdadasd</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(to bottom right, #1a0000, #330000, #660000);
       color: white;
-      animation: fadeIn 1s ease-in;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1.5s ease-in;
       line-height: 1.6;
     }
 
@@ -19,135 +22,89 @@
       background: rgba(0, 0, 0, 0.7);
       padding: 1.5rem 3rem;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      flex-wrap: wrap;
     }
 
     header h1 {
       margin: 0;
       font-size: 2rem;
       font-weight: bold;
-      color: #00ffff;
-      text-align: center;
+      color: #ff0000;
+      text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000;
     }
 
-
-    .back-button {
-      text-decoration: none;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      color: #fff;
-      background: transparent;
-      border: 2px solid #00ffff;
-      border-radius: 12px;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.3s;
+    header nav a {
       margin-left: 20px;
+      text-decoration: none;
     }
 
-    .back-button:hover {
-      transform: translateX(-10px) scale(1.1); 
-      box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff inset;
-      background-color: rgba(0, 255, 255, 0.1); 
+    .button {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px #ff0000;
+      cursor: pointer;
+      border: 2px solid #ff0000;
+      background: transparent;
+      color: #ff0000;
     }
 
-    .header-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .button:hover {
+      background: #ff0000;
+      color: #fff;
+      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000 inset;
+      transform: scale(1.1);
     }
 
-    .wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      padding: 4rem 2rem;
-    }
-
-    .setup-box {
-      flex: 1 1 300px;
-      padding: 2rem;
+    .container {
+      max-width: 960px;
+      margin: 4rem auto;
+      padding: 3rem;
       background: rgba(0, 0, 0, 0.45);
       border-radius: 20px;
-      box-shadow: 0 0 20px #00ffff;
-      border: 2px solid #00ffff;
-      animation: slideIn 0.8s ease-out;
-      max-width: 400px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
+      animation: slideIn 1.5s ease-out;
     }
 
-    .setup-box h2 {
-      text-align: center;
-      color: #00ffff;
+    h2 {
+      color: #ff0000;
       font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .setup-box ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.2rem;
-      color: #e0f7fa;
-    }
-
-    .setup-box ul li {
       margin-bottom: 1rem;
-      padding-left: 1rem;
+      text-shadow: 0 0 10px #ff0000;
     }
 
-    .setup-box a {
-      color: #8beeff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      position: relative;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #ffe0e0;
     }
 
-    .setup-box a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
+    iframe {
       width: 100%;
-      height: 2px;
-      background: #00ffff;
-      box-shadow: 0 0 8px #00ffff;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
+      height: 420px;
+      border: none;
+      border-radius: 15px;
+      margin-top: 2rem;
+      box-shadow: 0 0 15px #ff0000;
     }
 
-    .setup-box a:hover {
-      color: #00ffff;
-    }
-
-    .setup-box a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .social-links {
-      text-align: center;
-      margin: 3rem 0 2rem;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 0 15px;
-      transition: transform 0.3s ease, filter 0.3s;
-    }
-
-    .social-links a img {
-      width: 80px;  
-      height: 80px; 
-      transition: transform 0.3s ease, filter 0.3s, box-shadow 0.3s;
-      border-radius: 10%;
-    }
-
-
-    .social-links a:hover img {
-      transform: scale(1.3);  
-      filter: drop-shadow(0 0 10px #00ffff);
-      animation: bounce 0.6s ease-out;
+    .watermark {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: #ff0000;
+      font-weight: bold;
+      animation: neonPulse 2s infinite;
+      z-index: 999;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -156,88 +113,47 @@
     }
 
     @keyframes slideIn {
-      from { transform: translateY(30px); opacity: 0; }
+      from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes bounce {
-      0% {
-        transform: scale(1.3);
-      }
-      30% {
-        transform: scale(1.15);
+    @keyframes neonPulse {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+        opacity: 0.8;
       }
       50% {
-        transform: scale(1.3);
-      }
-      70% {
-        transform: scale(1.2);
-      }
-      100% {
-        transform: scale(1.3);
-      }
-    }
-
-    @media (max-width: 800px) {
-      .wrapper {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .back-button {
-        margin-left: 0;
+        text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+        opacity: 1;
       }
     }
   </style>
 </head>
 <body>
+  <div class="watermark">@balazs734</div>
   <header>
-    <h1>Setup</h1>
-    <div class="header-gombok">
-      <a href="index.html" class="back-button">Vissza a főoldalra</a>
-    </div>
+    <h1>FŐOLDAL</h1>
+    <nav>
+      <a href="setup.html" class="button">Setup</a>
+      <a href="https://discord.com/invite/" class="button" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://yt.balazs734.hu" class="button" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </nav>
   </header>
 
-  <div class="dolgok">
-    <div class="setup-box">
-      <h2>🖥️ PC</h2>
-      <ul>
-        <li><strong>Processzor:</strong> <a href="https://www.arukereso.hu/processzor-c3139/intel/core-i5-12400f-6-core-2-5ghz-lga1700-box-bx8071512400f-p755226858/?sgst=1" target="_blank">Intel Core i5-12400F</a></li>
-        <li><strong>Memória:</strong> <a href="https://www.arukereso.hu/memoria-modul-c3577/g-skill/aegis-16gb-2x8gb-ddr4-3200mhz-f4-3200c16d-16gis-p505099300/" target="_blank">G.SKILL Aegis 16GB DDR4 3200MHz</a></li>
-        <li><strong>Alaplap:</strong> <a href="https://www.arukereso.hu/alaplap-c3128/msi/pro-h610m-e-ddr4-p923286162/?sgst=1" target="_blank">MSI PRO H610M-E DDR4</a></li>
-        <li><strong>Tápegység:</strong> <a href="https://www.arukereso.hu/tapegyseg-c3158/deepcool/pf650-650w-80-plus-r-pf650d-ha0b-p763919622/?sgst=1" target="_blank">DeepCool PF650 650W</a></li>
-        <li><strong>Ház:</strong> <a href="https://www.arukereso.hu/szamitogep-haz-c3085/zalman/i3-neo-white-p1156861318/?sgst=1" target="_blank">Zalman i3 NEO White</a></li>
-        <li><strong>SSD:</strong> <a href="https://belso-ssd-meghajto.arukereso.hu/western-digital/sn740-512gb-sddqnqd-512g-1201-p1160905849/" target="_blank">WD SN740 512GB NVMe</a></li>
-        <li><strong>HDD:</strong> <a href="https://www.arukereso.hu/merevlemez-c3103/seagate/500gb-st9500325a-p42061424/" target="_blank">Seagate 500GB</a></li>
-      </ul>
-    </div>
+  <div class="container">
+    <div class="infó">
+      <h2>Üdvözöllek a weboldalamon 👋</h2>
+      <p><strong>Balázs vagyok.</strong></p>
+      <p>
+        A célom az, hogy egy nagyszerű közösséget építsek, főként gaming és tech témákban. 
+        Már régóta foglalkozom a YouTube világával, és mostanra értem el arra a szintre, 
+        hogy élvezhető, igényes tartalmakat tudjak gyártani. 🎥<br><br>
+        Ha szeretnél része lenni a közösségemnek, iratkozz fel, és tarts velem a jövőben is! 🎮
+      </p>
 
-    <div class="setup-box">
-      <h2>🖱️ Perifériák</h2>
-      <ul>
-        <li><strong>Billentyűzet:</strong> <a href="https://www.arukereso.hu/billentyuzet-c3111/redragon/kumara-rgb-k552rgb-1-blue-hu-p802912743/" target="_blank">Redragon Kumara RGB</a></li>
-        <li><strong>Egér:</strong> <a href="https://eger.arukereso.hu/vxe/r1-pro-white-p1052032792/?sgst=1" target="_blank">VXE R1 Pro White</a></li>
-        <li><strong>Egérpad:</strong> <a href="https://topbolt.hu/Izoxis-21912-ergonomikus-csuszasmentes-extra-nagy?gad_campaignid=22302357063" target="_blank">IZOXIS 21912 XL</a></li>
-        <li><strong>Mikrofon:</strong> <a href="https://szamitogep-mikrofon.arukereso.hu/fifine-microphone/a6v-p934240887/" target="_blank">FIFINE A6V</a></li>
-        <li><strong>Fejhallgató:</strong> <a href="https://www.arukereso.hu/fulhallgato-fejhallgato-c3109/steelseries/arctis-7p-61471-p734386083/" target="_blank">SteelSeries Arctis 7P+</a></li>
-        <li><strong>Monitor:</strong> <a href="https://www.arukereso.hu/monitor-c3126/lg/ultragear-24gq50f-b-p882495171/#" target="_blank">LG UltraGear 24GQ50F-B</a></li>
-        <li><strong>Monitor:</strong> <a href="https://www.arukereso.hu/monitor-c3126/acer/x192w-p15989443/" target="_blank">Acer X192W</a></li>
-      </ul>
+      <h2>Legújabb videóm:</h2>
+      <iframe src="https://www.youtube.com/embed/35ql0tx6vsQ?si=p9kwQzqPEJd4bw8z" allowfullscreen></iframe>
     </div>
-  </div>
-
-  <div class="linkek">
-    <a href="https://www.youtube.com/" target="_blank">
-      <img src="yt_logo.png" alt="YouTube" />
-    </a>
-    <a href="https://www.twitch.tv/" target="_blank">
-      <img src="twitch_logo.png" alt="Twitch" />
-    </a>
   </div>
 </body>
 </html>
