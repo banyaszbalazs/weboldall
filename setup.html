@@ -1,217 +1,166 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="yt_logo_piros.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Setup</title>
+  <link rel="icon" type="image/png" href="yt_logo_piros.png">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #0a0000, #1a0000, #2b0000);
-      color: white;
+      background: #0a0a0a;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: fadeIn 1.5s ease-in forwards;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* Csillagos háttér */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(72,0,128,0.3) 0%, rgba(0,0,0,0.8) 100%), 
+                  url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-blend-mode: overlay;
+      opacity: 0.5;
+      z-index: -1;
+      animation: stars 150s linear infinite;
+    }
+
+    @keyframes stars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 10000px; }
+    }
+
+    /* Header */
     header {
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(255, 0, 0, 0.5);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      box-shadow: 0 0 15px #d77aff, 0 0 25px #8a2be2;
+      border-bottom: 2px solid #d77aff;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
       margin: 0;
       font-size: 2rem;
-      color: #ff0000;
+      color: #d77aff;
+      text-shadow: 0 0 5px #d77aff, 0 0 15px #8a2be2;
     }
 
-    .button {
+    header nav a {
+      position: relative;
       display: inline-block;
-      padding: 0.4rem 1.2rem;
-      margin-top: 10px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 8px;
+      padding: 0.7rem 1.8rem;
+      margin-left: 20px;
+      color: #da70d6;
+      font-weight: bold;
+      text-transform: uppercase;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px #ff0000;
-      border: 2px solid #ff0000;
-      background: transparent;
-      color: #ff0000;
+      border: 2px solid #da70d6;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.6s ease-in-out;
+      box-shadow: 0 0 8px #da70d6, 0 0 18px #da70d6 inset;
+      background: rgba(0,0,0,0.2);
+      z-index: 1;
     }
 
-    .button:hover {
-      background: #ff0000;
-      color: #fff;
-      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000 inset;
+    header nav a:hover {
+      color: #000;
+      background: #da70d6;
+      box-shadow: 0 0 30px #da70d6, 0 0 50px #da70d6 inset;
       transform: scale(1.05);
     }
 
+    /* Container */
     .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
       max-width: 1200px;
-      margin: 2rem auto;
+      margin: 4rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       padding: 0 1rem;
     }
 
+    /* Panel */
     .panel {
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0,0,0,0.55);
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
       padding: 1.5rem;
-      transition: box-shadow 0.5s ease, transform 0.3s ease;
+      box-shadow: 0 0 20px rgba(255,0,255,0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      animation: fadeInPanel 1.2s ease forwards;
     }
 
     .panel:hover {
-      animation: glow 3s infinite alternate ease-in-out;
-      transform: scale(1.03);
-      box-shadow:
-        0 0 15px #ff0000,
-        0 0 30px #ff0000,
-        0 0 45px #ff4d4d,
-        0 0 60px #ff6666;
+      box-shadow: 0 0 25px #ff66ff, 0 0 50px #ff99ff;
     }
 
-    @keyframes glow {
-      0% {
-        box-shadow:
-          0 0 15px #ff0000,
-          0 0 30px #ff0000,
-          0 0 45px #ff4d4d,
-          0 0 60px #ff6666;
-      }
-      100% {
-        box-shadow:
-          0 0 25px #ff4d4d,
-          0 0 40px #ff6666,
-          0 0 55px #ff9999,
-          0 0 70px #ffb3b3;
-      }
+    @keyframes fadeInPanel {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
-      color: #ff0000;
+      color: #ff00ff;
       margin-bottom: 1rem;
       font-size: 1.5rem;
     }
 
-    p {
+    p a {
+      display: block;
       margin: 0.4rem 0;
-    }
-
-    p strong {
-      color: #ff0000;
-    }
-
-    a {
-      color: white;
+      color: #fff;
       text-decoration: none;
+      transition: color 0.3s, text-shadow 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
-      color: #ff4d4d;
+    p a strong {
+      color: #ff00ff;
     }
 
+    p a span {
+      color: #fff;
+    }
+
+    p a:hover {
+      color: #66ccff;
+      text-shadow: 0 0 8px rgba(0,180,255,0.8), 0 0 12px rgba(160,0,255,0.6);
+    }
+
+    /* Watermark */
     .watermark {
       position: fixed;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 1.3rem;
-      color: #ff0000;
-      text-shadow:
-        0 0 8px rgba(255,0,0,0.9),
-        0 0 20px rgba(255,0,0,0.7),
-        0 0 40px rgba(255,0,0,0.5);
-      pointer-events: auto;
+      color: #ff00ff;
+      text-shadow: 0 0 8px rgba(255,0,255,0.9), 0 0 20px rgba(255,0,255,0.7), 0 0 40px rgba(255,0,255,0.5);
       z-index: 9999;
-      animation: pulse 1.8s infinite ease-in-out;
+      animation: watermarkPulse 4s infinite ease-in-out;
       letter-spacing: 0.6px;
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
-    .watermark:hover {
-      animation: burst 0.8s ease-in-out forwards;
-      transform: scale(1.2);
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: translateY(-50%) scale(1);
-        text-shadow:
-          0 0 8px rgba(255,0,0,0.9),
-          0 0 20px rgba(255,0,0,0.7),
-          0 0 40px rgba(255,0,0,0.5);
-        opacity: 0.95;
-      }
-      50% {
-        transform: translateY(-50%) scale(1.08);
-        text-shadow:
-          0 0 14px rgba(255,0,0,1),
-          0 0 50px rgba(255,0,0,0.9),
-          0 0 90px rgba(255,0,0,0.6);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) scale(1);
-        text-shadow:
-          0 0 8px rgba(255,0,0,0.9),
-          0 0 20px rgba(255,0,0,0.7),
-          0 0 40px rgba(255,0,0,0.5);
-        opacity: 0.95;
-      }
-    }
-
-    @keyframes burst {
-      0% {
-        text-shadow:
-          0 0 8px #ff0000,
-          0 0 20px #ff0000,
-          0 0 40px #ff0000;
-      }
-      50% {
-        text-shadow:
-          0 0 25px #ff4d4d,
-          0 0 60px #ff4d4d,
-          0 0 100px #ff4d4d;
-      }
-      100% {
-        text-shadow:
-          0 0 8px #ff0000,
-          0 0 20px #ff0000,
-          0 0 40px #ff0000;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Motion reduction for sensitive users */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.001s !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001s !important;
-      }
+    @keyframes watermarkPulse {
+      0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.95; }
+      50% { transform: translateY(-50%) scale(1.05); opacity: 1; }
     }
   </style>
 </head>
@@ -219,46 +168,43 @@
   <div class="watermark">@balazs734</div>
   <header>
     <h1>Setup</h1>
-    <a href="index.html" class="button">FŐOLDAL</a>
+    <nav>
+      <a href="index.html">← Home</a>
+    </nav>
   </header>
 
   <div class="container">
     <div class="panel">
       <h2>PC</h2>
-      <p><strong>Processzor:</strong> <a href="https://www.arukereso.hu/processzor-c3139/intel/core-i5-12400f-6-core-2-5ghz-lga1700-box-bx8071512400f-p755226858/" target="_blank" rel="noopener noreferrer">i5 12400f</a></p>
-      <p><strong>Videókártya:</strong> <a href="https://videocardz.net/asus-geforce-rtx-3070-8gb-megalodon" target="_blank" rel="noopener noreferrer">RTX 3070</a></p>
-      <p><strong>Alaplap:</strong> <a href="https://www.arukereso.hu/alaplap-c3128/msi/pro-h610m-e-ddr4-p923286162/" target="_blank" rel="noopener noreferrer">MSI PRO H610M-E DDR4</a></p>
-      <p><strong>RAM:</strong> <a href="https://www.arukereso.hu/memoria-modul-c3577/g-skill/aegis-16gb-2x8gb-ddr4-3200mhz-f4-3200c16d-16gis-p505099300/" target="_blank" rel="noopener noreferrer">G.Skill Aegis 16GB</a></p>
-      <p><strong>SSD:</strong> <a href="https://pcland.hu/western-digital-500gb-m2-2280-nvme-sn710-black-187574?gad_campaignid=21188401355" target="_blank" rel="noopener noreferrer">WD Black 500GB NVMe</a></p>
-      <p><strong>HDD:</strong> <a href="https://www.arukereso.hu/merevlemez-c3103/seagate/barracuda-2-5-500gb-sata3-st500lm030-p349112923/" target="_blank" rel="noopener noreferrer">Seagate Barracuda 500GB</a></p>
-      <p><strong>Tápegység:</strong> <a href="https://www.pcx.hu/deepcool-tapegyseg-650w-pf650-370470?gad_campaignid=22796350268" target="_blank" rel="noopener noreferrer">Deepcool 650W</a></p>
-      <p><strong>Ház:</strong> <a href="https://www.fizz.hu/p/szamitogep-hazak/zalman-i3-neo-szamitogephaz-feher/CYDTIMMJY?&gad_campaignid=22592272517" target="_blank" rel="noopener noreferrer">Zalman I3 NEO Fehér</a></p>
-      <p><strong>OS:</strong> Windows 11</p>
+      <p><a href="https://www.arukereso.hu/processzor-c3139/intel/core-i5-12400f-6-core-2-5ghz-lga1700-box-bx8071512400f-p755226858/" target="_blank"><strong>Processzor:</strong> <span>i5 12400f</span></a></p>
+      <p><a href="https://videocardz.net/asus-geforce-rtx-3070-8gb-megalodon" target="_blank"><strong>Videókártya:</strong> <span>RTX 3070</span></a></p>
+      <p><a href="https://www.arukereso.hu/alaplap-c3128/msi/pro-h610m-e-ddr4-p923286162/" target="_blank"><strong>Alaplap:</strong> <span>MSI PRO H610M-E DDR4</span></a></p>
+      <p><a href="https://www.arukereso.hu/memoria-modul-c3577/g-skill/aegis-16gb-2x8gb-ddr4-3200mhz-f4-3200c16d-16gis-p505099300/" target="_blank"><strong>RAM:</strong> <span>G.Skill Aegis 16GB</span></a></p>
+      <p><a href="https://pcland.hu/western-digital-500gb-m2-2280-nvme-sn710-black-187574?gad_campaignid=21188401355" target="_blank"><strong>SSD:</strong> <span>WD Black 500GB NVMe</span></a></p>
+      <p><a href="https://www.arukereso.hu/merevlemez-c3103/seagate/barracuda-2-5-500gb-sata3-st500lm030-p349112923/" target="_blank"><strong>HDD:</strong> <span>Seagate Barracuda 500GB</span></a></p>
+      <p><a href="https://www.pcx.hu/deepcool-tapegyseg-650w-pf650-370470?gad_campaignid=22796350268" target="_blank"><strong>Tápegység:</strong> <span>Deepcool 650W</span></a></p>
+      <p><a href="https://www.fizz.hu/p/szamitogep-hazak/zalman-i3-neo-szamitogephaz-feher/CYDTIMMJY?&gad_campaignid=22592272517" target="_blank"><strong>Ház:</strong> <span>Zalman I3 NEO Fehér</span></a></p>
+      <p><a href="https://www.arukereso.hu/operacios-rendszer/windows-11.html" target="_blank"><strong>OS:</strong> <span>Windows 11</span></a></p>
     </div>
 
     <div class="panel">
       <h2>Szoftverek</h2>
-      <p><strong>Videóvágó:</strong> Adobe Premier Pro 25</p>
-      <p><strong>Képszerkesztő:</strong> Adobe Photoshop 25</p>
-      <p><strong>Felvevő:</strong> OBS</p>
+      <p><a href="https://www.arukereso.hu/szoftver/davinci-resolve-18.html" target="_blank"><strong>Videóvágó:</strong> <span>Davinci Resolve 18</span></a></p>
+      <p><a href="#" target="_blank"><strong>Képszerkesztő:</strong> <span>—</span></a></p>
+      <p><a href="https://www.arukereso.hu/szoftver/obs.html" target="_blank"><strong>Felvevő:</strong> <span>OBS</span></a></p>
     </div>
 
     <div class="panel">
       <h2>Perifériák</h2>
-      <p><strong>Billentyűzet:</strong> <a href="https://www.arukereso.hu/billentyuzet-c3111/redragon/kumara-rgb-k552rgb-1-brown-hu-p802912761/?sgst=1" target="_blank" rel="noopener noreferrer">Redragon Kumara RGB</a></p>
-      <p><strong>Egér:</strong> <a href="https://eger.arukereso.hu/vxe/r1-pro-white-p1052032792/?sgst=1" target="_blank" rel="noopener noreferrer">R1 Pro White</a></p>
-      <p><strong>Monitor:</strong> <a href="https://www.arukereso.hu/monitor-c3126/lg/ultragear-24gq50f-b-p882495171/" target="_blank" rel="noopener noreferrer">LG Ultragear 24GQ50F-B</a></p>
-      <p><strong>Monitor:</strong> <a href="https://www.arukereso.hu/monitor-c3126/acer/x192w-p15989443/" target="_blank" rel="noopener noreferrer">Acer X192W</a></p>
-      <p><strong>Fejhallgató:</strong> <a href="https://www.arukereso.hu/fulhallgato-fejhallgato-c3109/steelseries/arctis-7p-61471-p734386083/" target="_blank" rel="noopener noreferrer">SteelSeries Arctis 7P</a></p>
-      <p><strong>Kontroller:</strong> <a href="https://www.konzolvilag.hu/playstation5/playstation-5-ps5-dualsense-controller-cosmic-red?gad_campaignid=17177861475" target="_blank" rel="noopener noreferrer">PS5 DualSense Cosmic Red</a></p>
-      <p><strong>Kontroller:</strong> <a href="https://www.konzolvilag.hu/playstation5/playstation-5-ps5-dualsense-controller-white-black" target="_blank" rel="noopener noreferrer">PS5 DualSense White/Black</a></p>
-      <p><strong>Mikrofon:</strong> <a href="https://szamitogep-mikrofon.arukereso.hu/fifine-microphone/a6v-p934240887/" target="_blank" rel="noopener noreferrer">Fifine A6V</a></p>
+      <p><a href="https://www.arukereso.hu/billentyuzet-c3111/redragon/kumara-rgb-k552rgb-1-brown-hu-p802912761/?sgst=1" target="_blank"><strong>Billentyűzet:</strong> <span>Redragon Kumara RGB</span></a></p>
+      <p><a href="https://eger.arukereso.hu/vxe/r1-pro-white-p1052032792/?sgst=1" target="_blank"><strong>Egér:</strong> <span>R1 Pro White</span></a></p>
+      <p><a href="https://www.arukereso.hu/monitor-c3126/lg/ultragear-24gq50f-b-p882495171/" target="_blank"><strong>Monitor:</strong> <span>LG Ultragear 24GQ50F-B</span></a></p>
+      <p><a href="https://www.arukereso.hu/monitor-c3126/acer/x192w-p15989443/" target="_blank"><strong>Monitor:</strong> <span>Acer X192W</span></a></p>
+      <p><a href="https://www.arukereso.hu/fejhallgato/steelseries-arctis-7p.html" target="_blank"><strong>Fejhallgató:</strong> <span>SteelSeries Arctis 7P</span></a></p>
+      <p><a href="https://www.konzolvilag.hu/playstation5/playstation-5-ps5-dualsense-controller-cosmic-red?gad_campaignid=17177861475" target="_blank"><strong>Kontroller:</strong> <span>PS5 DualSense Cosmic Red</span></a></p>
+      <p><a href="https://www.konzolvilag.hu/playstation5/playstation-5-ps5-dualsense-controller-white-black" target="_blank"><strong>Kontroller:</strong> <span>PS5 DualSense White/Black</span></a></p>
+      <p><a href="https://szamitogep-mikrofon.arukereso.hu/fifine-microphone/a6v-p934240887/" target="_blank"><strong>Mikrofon:</strong> <span>Fifine A6V</span></a></p>
     </div>
   </div>
 </body>
 </html>
-
-
-
-
-
