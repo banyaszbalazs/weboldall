@@ -1,89 +1,137 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balazs734 - Tech | Gaming | Vlog</title>
   <link rel="icon" type="image/png" href="yt_logo_piros.png">
-  <title>Főoldal</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #1a0000, #330000, #660000);
-      color: white;
+      background: #0a0a0a;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: fadeIn 1.5s ease-in;
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* QuantumPC lila csillagos háttér */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(72,0,128,0.3) 0%, rgba(0,0,0,0.8) 100%), 
+                  url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-blend-mode: overlay;
+      opacity: 0.5;
+      z-index: -1;
+      animation: stars 150s linear infinite; /* lassú mozgás */
+    }
+
+    @keyframes stars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 10000px; }
+    }
+
+    /* Neon header */
     header {
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
       padding: 1.5rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.85);
+      box-shadow: 0 0 15px #d77aff, 0 0 25px #8a2be2;
+      border-bottom: 2px solid #d77aff;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
       margin: 0;
       font-size: 2rem;
-      font-weight: bold;
-      color: #ff0000;
-      text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000;
+      color: #d77aff;
+      text-shadow: 0 0 5px #d77aff, 0 0 15px #8a2be2;
     }
 
     header nav a {
-      margin-left: 20px;
-      text-decoration: none;
-    }
-
-    .button {
+      position: relative;
       display: inline-block;
-      padding: 0.6rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 12px;
+      padding: 0.7rem 1.8rem;
+      margin-left: 20px;
+      color: #da70d6;
+      font-weight: bold;
+      text-transform: uppercase;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px #ff0000;
-      cursor: pointer;
-      border: 2px solid #ff0000;
-      background: transparent;
-      color: #ff0000;
+      border: 2px solid #da70d6;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.6s ease-in-out; /* lassabb hover */
+      box-shadow: 0 0 8px #da70d6, 0 0 18px #da70d6 inset;
+      background: rgba(0,0,0,0.2);
+      z-index: 1;
     }
 
-    .button:hover {
-      background: #ff0000;
-      color: #fff;
-      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000 inset;
-      transform: scale(1.1);
+    header nav a::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(218,112,214,0.5), transparent);
+      transform: skewX(-20deg);
+      transition: all 2s ease-in-out; /* lassabb animáció */
+      animation: neonSlide 8s linear infinite; /* lassabb */
     }
 
+    header nav a:hover {
+      color: #000;
+      background: #da70d6;
+      box-shadow: 0 0 30px #da70d6, 0 0 50px #da70d6 inset;
+      transform: scale(1.05);
+    }
+
+    @keyframes neonSlide {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: -100%; }
+    }
+
+    /* Szövegdoboz: finom fade-in */
     .container {
       max-width: 960px;
       margin: 4rem auto;
       padding: 3rem;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0,0,0,0.55);
       border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.8);
-      animation: slideIn 1.5s ease-out;
+      box-shadow: 0 0 25px #d77aff, 0 0 25px #8a2be2;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 2s forwards; /* egyszeri finom fade-in */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     h2 {
-      color: #ff0000;
+      color: #d77aff;
       font-size: 2rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 10px #ff0000;
+      text-shadow: 0 0 10px #d77aff;
     }
 
     p {
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
-      color: #ffe0e0;
+      color: #c0c0ff;
     }
 
     iframe {
@@ -92,7 +140,7 @@
       border: none;
       border-radius: 15px;
       margin-top: 2rem;
-      box-shadow: 0 0 15px #ff0000;
+      box-shadow: 0 0 15px #d77aff, 0 0 15px #8a2be2;
     }
 
     .watermark {
@@ -101,30 +149,21 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 1.5rem;
-      color: #ff0000;
+      color: #d77aff;
       font-weight: bold;
+      text-shadow: 0 0 5px #d77aff, 0 0 15px #8a2be2;
       animation: neonPulse 2s infinite;
       z-index: 999;
       user-select: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     @keyframes neonPulse {
       0%, 100% {
-        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-        opacity: 0.8;
+        text-shadow: 0 0 5px #d77aff, 0 0 15px #8a2be2;
+        opacity: 0.85;
       }
       50% {
-        text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+        text-shadow: 0 0 12px #d77aff, 0 0 25px #8a2be2;
         opacity: 1;
       }
     }
@@ -135,31 +174,24 @@
   <header>
     <h1>FŐOLDAL</h1>
     <nav>
-      <a href="setup.html" class="button">Setup</a>
-      <a href="https://discord.com/invite/" class="button" target="_blank" rel="noopener noreferrer">Discord</a>
-      <a href="https://yt.balazs734.hu" class="button" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="setup.html">Setup</a>
+      <a href="https://discord.com/invite/" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://yt.balazs734.hu" target="_blank" rel="noopener noreferrer">YouTube</a>
     </nav>
   </header>
 
   <div class="container">
-    <div class="infó">
-      <h2>Üdvözöllek a weboldalamon 👋</h2>
-      <p><strong>Balázs vagyok.</strong></p>
-      <p>
-        A célom az, hogy egy nagyszerű közösséget építsek, főként gaming és tech témákban. 
-        Már régóta foglalkozom a YouTube világával, és mostanra értem el arra a szintre, 
-        hogy élvezhető, igényes tartalmakat tudjak gyártani. 🎥<br><br>
-        Ha szeretnél része lenni a közösségemnek, iratkozz fel, és tarts velem a jövőben is! 🎮
-      </p>
+    <h2>Üdvözöllek a weboldalamon 👋</h2>
+    <p><strong>Balázs vagyok.</strong></p>
+    <p>
+      A célom az, hogy egy nagyszerű közösséget építsek, főként gaming és tech témákban. 
+      Már régóta foglalkozom a YouTube világával, és mostanra értem el arra a szintre, 
+      hogy élvezhető, igényes tartalmakat tudjak gyártani. 🎥<br><br>
+      Ha szeretnél része lenni a közösségemnek, iratkozz fel, és tarts velem a jövőben is! 🎮
+    </p>
 
-      <h2>Legújabb videóm:</h2>
-      <iframe src="https://www.youtube.com/embed/p6pOgECm5GE?si=aCf0JpsYCIeJivTb" allowfullscreen></iframe>
-    </div>
+    <h2>Legújabb videóm:</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/p6pOgECm5GE?si=dVepNxOlJn7gg6Oy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 </body>
 </html>
-
-
-
-
-
